@@ -1,0 +1,22 @@
+﻿<Window x:Class="WpfStudyApplication.StackWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfStudyApplication"
+        mc:Ignorable="d"
+        Title="StackWindow" Height="450" Width="800">
+    <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
+        <Button Margin="10" FontSize="36">1</Button>
+        <Button Margin="10" FontSize="36">2</Button>
+        <Button Margin="10" FontSize="36">3</Button>
+        <Button Margin="10" FontSize="36">1</Button>
+    </StackPanel>
+    <!--<DockPanel LastChildFill="True">
+        <Button DockPanel.Dock="Bottom" Background="DarkBlue">Hello</Button>
+        <Button DockPanel.Dock="Right" Background="Goldenrod">Hello</Button>
+        <Button DockPanel.Dock="Top" Background="SaddleBrown">Hello</Button>
+        <Button DockPanel.Dock="Left" Background="Firebrick">Hello</Button>
+        <Button DockPanel.Dock="Bottom" Background="Wheat">Hello</Button>
+    </DockPanel>-->
+</Window>
