@@ -30,12 +30,14 @@ namespace WpfStudyApplication.Database
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //User[] users = new User[]
-            //{
-            //    new User() { Id = 1, Name = "Vlad", Email = "1.email.com", Password = "123456", BirthDay = DateTime.UtcNow },
-            //    new User() { Id = 2, Name = "Alex", Email = "2.email.com", Password = "123456", BirthDay = DateTime.UtcNow }
-            //};
-            //modelBuilder.Entity<User>().HasData(users);
+            User[] users = new User[]
+            {
+                new User() { Id = 1, Name = "Vlad", Email = "1.email.com", Password = "123456", BirthDay = DateTime.UtcNow },
+                new User() { Id = 2, Name = "Alex", Email = "2.email.com", Password = "123456", BirthDay = DateTime.UtcNow }
+            };
+            modelBuilder.Entity<User>().HasData(users);
+
+            modelBuilder.BookConfiguration();
         }
     }
 }

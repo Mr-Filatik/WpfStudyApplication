@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WpfStudyApplication.Database;
 
@@ -11,9 +12,11 @@ using WpfStudyApplication.Database;
 namespace WpfStudyApplication.Database.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    partial class MyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240626160751_Test_Migration")]
+    partial class Test_Migration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,39 +24,6 @@ namespace WpfStudyApplication.Database.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("WpfStudyApplication.Database.Enities.Book", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Author")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<int?>("CurrentUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CurrentUserId")
-                        .IsUnique()
-                        .HasFilter("[CurrentUserId] IS NOT NULL");
-
-                    b.ToTable("Book");
-                });
 
             modelBuilder.Entity("WpfStudyApplication.Database.Enities.User", b =>
                 {
@@ -88,7 +58,7 @@ namespace WpfStudyApplication.Database.Migrations
                         new
                         {
                             Id = 1,
-                            BirthDay = new DateTime(2024, 6, 26, 16, 26, 20, 215, DateTimeKind.Utc).AddTicks(9961),
+                            BirthDay = new DateTime(2024, 6, 26, 16, 7, 51, 73, DateTimeKind.Utc).AddTicks(3302),
                             Email = "1.email.com",
                             Name = "Vlad",
                             Password = "123456"
@@ -96,7 +66,7 @@ namespace WpfStudyApplication.Database.Migrations
                         new
                         {
                             Id = 2,
-                            BirthDay = new DateTime(2024, 6, 26, 16, 26, 20, 215, DateTimeKind.Utc).AddTicks(9963),
+                            BirthDay = new DateTime(2024, 6, 26, 16, 7, 51, 73, DateTimeKind.Utc).AddTicks(3304),
                             Email = "2.email.com",
                             Name = "Alex",
                             Password = "123456"
@@ -129,20 +99,6 @@ namespace WpfStudyApplication.Database.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Admins");
-                });
-
-            modelBuilder.Entity("WpfStudyApplication.Database.Enities.Book", b =>
-                {
-                    b.HasOne("WpfStudyApplication.Database.Enities.User", "CurrentUser")
-                        .WithOne("Book")
-                        .HasForeignKey("WpfStudyApplication.Database.Enities.Book", "CurrentUserId");
-
-                    b.Navigation("CurrentUser");
-                });
-
-            modelBuilder.Entity("WpfStudyApplication.Database.Enities.User", b =>
-                {
-                    b.Navigation("Book");
                 });
 #pragma warning restore 612, 618
         }
