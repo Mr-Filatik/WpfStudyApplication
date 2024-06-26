@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WpfStudyApplication.Database.Enities
+﻿namespace WpfStudyApplication.Database.Enities
 {
     public class User
     {
