@@ -21,11 +21,11 @@ namespace WpfStudyApplication
     {
         private MyDbContext _context;
 
-        public MainWindow()
+        public MainWindow(MyDbContext context)
         {
             InitializeComponent();
 
-            _context = new MyDbContext();
+            _context = context;
         }
 
         private void PressStartApplication(object sender, RoutedEventArgs e)
@@ -98,7 +98,7 @@ namespace WpfStudyApplication
             {
                 MessageBox.Show($"User not found!", "Info", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            user.Email += ".com";
+            //user.Email += ".com";
 
             _context.SaveChanges();
         }
