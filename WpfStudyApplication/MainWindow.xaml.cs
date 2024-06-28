@@ -10,6 +10,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfStudyApplication.Database;
+using WpfStudyApplication.Database.Abstract;
 using WpfStudyApplication.Database.Enities;
 
 namespace WpfStudyApplication
@@ -20,12 +21,14 @@ namespace WpfStudyApplication
     public partial class MainWindow : Window
     {
         private MyDbContext _context;
+        private IUserRepository _userRepository;
 
-        public MainWindow(MyDbContext context)
+        public MainWindow(MyDbContext context, IUserRepository userRepository)
         {
             InitializeComponent();
 
             _context = context;
+            _userRepository = userRepository;
         }
 
         private void PressStartApplication(object sender, RoutedEventArgs e)
@@ -89,7 +92,7 @@ namespace WpfStudyApplication
 
         private void FindUser(object sender, RoutedEventArgs e)
         {
-            var user = _context.Users.FirstOrDefault(x => x.Id == int.Parse(idBox.Text));
+            var user = _userRepository.GetUserById(int.Parse(idBox.Text));
             if (user is not null)
             {
                 MessageBox.Show($"User: Id ({user.Id}), Name ({user.Name}), Email ({user.Email})");

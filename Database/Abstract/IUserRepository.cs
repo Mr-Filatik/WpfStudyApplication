@@ -5,13 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using WpfStudyApplication.Database.Enities;
 
-namespace WpfStudyApplication.Database
+namespace WpfStudyApplication.Database.Abstract
 {
-    public class UserRepository
+    public interface IUserRepository
     {
-        //public User GetUser()
-        //{
-
-        //}
+        User GetUserById(int id);
     }
 }

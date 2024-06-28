@@ -7,6 +7,8 @@ using System.Data;
 using System.IO;
 using System.Windows;
 using WpfStudyApplication.Database;
+using WpfStudyApplication.Database.Abstract;
+using WpfStudyApplication.Database.Repository;
 
 namespace WpfStudyApplication
 {
@@ -33,6 +35,7 @@ namespace WpfStudyApplication
             var serviceCollection = new ServiceCollection();
 
             serviceCollection.AddSingleton(new MyDbContext(optionsBuilder.Options));
+            serviceCollection.AddScoped<IUserRepository, UserRepository>();
             serviceCollection.AddWindows();
 
             ServiceProvider = serviceCollection.BuildServiceProvider();
