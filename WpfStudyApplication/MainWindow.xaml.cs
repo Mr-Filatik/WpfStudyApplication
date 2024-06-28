@@ -78,29 +78,29 @@ namespace WpfStudyApplication
 
         private void CreateUser(object sender, RoutedEventArgs e)
         {
-            User user = new User()
-            {
-                Name = nameBox.Text,
-                Password = passwordBox.Text,
-                Email = emailBox.Text,
-                BirthDay = DateTime.UtcNow
-            };
+            //User user = new User()
+            //{
+            //    Name = nameBox.Text,
+            //    Password = passwordBox.Text,
+            //    Email = emailBox.Text,
+            //    BirthDay = DateTime.UtcNow
+            //};
 
-            _context.Users.Add(user);
+            //_context.Users.Add(user);
             _context.SaveChanges();
         }
 
         private void FindUser(object sender, RoutedEventArgs e)
         {
-            var user = _userRepository.GetUserById(int.Parse(idBox.Text));
-            if (user is not null)
-            {
-                MessageBox.Show($"User: Id ({user.Id}), Name ({user.Name}), Email ({user.Email})");
-            }
-            else
-            {
-                MessageBox.Show($"User not found!", "Info", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            //var user = _userRepository.GetUserById(int.Parse(idBox.Text));
+            //if (user is not null)
+            //{
+            //    MessageBox.Show($"User: Id ({user.Id}), Name ({user.Name}), Email ({user.Email})");
+            //}
+            //else
+            //{
+            //    MessageBox.Show($"User not found!", "Info", MessageBoxButton.OK, MessageBoxImage.Error);
+            //}
             //user.Email += ".com";
 
             _context.SaveChanges();
@@ -108,7 +108,7 @@ namespace WpfStudyApplication
 
         private void DeleteUser(object sender, RoutedEventArgs e)
         {
-            _context.Users.Remove(new User() { Id = int.Parse(idDelBox.Text) });
+            //_context.Users.Remove(new User() { Id = int.Parse(idDelBox.Text) });
             _context.SaveChanges();
         }
     }
