@@ -5,44 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfStudyApplication"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="800">
+        Title="MainWindow" Height="500" Width="800">
     <Grid x:Name="mainGrid">
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
             <RowDefinition></RowDefinition>
-            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="50"></ColumnDefinition>
+            <ColumnDefinition Width="100"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition Width="50"></ColumnDefinition>
+            <ColumnDefinition Width="100"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Column="1" Grid.Row="1">
-            <TextBlock FontSize="24">Name</TextBlock>
-            <TextBox x:Name="nameBox" FontSize="24"></TextBox>
-            <TextBlock FontSize="24">Password</TextBlock>
-            <TextBox x:Name="passwordBox" FontSize="24"></TextBox>
+            <TextBlock FontSize="24" 
+                TextAlignment="Center" 
+                FontWeight="Bold"
+                Margin="20" >Library</TextBlock>
             <TextBlock FontSize="24">Email</TextBlock>
             <TextBox x:Name="emailBox" FontSize="24"></TextBox>
-            <Button FontSize="24" Click="CreateUser">Create User</Button>
-            <TextBlock FontSize="24">Id</TextBlock>
-            <TextBox x:Name="idBox" FontSize="24"></TextBox>
-            <Button FontSize="24" Click="FindUser">Find User</Button>
-            <TextBlock FontSize="24">Id Delete</TextBlock>
-            <TextBox x:Name="idDelBox" FontSize="24"></TextBox>
-            <Button FontSize="24" Click="DeleteUser">Delete User</Button>
-        </StackPanel>
-        
-        <Button x:Name="startButton" 
+            <TextBlock FontSize="24">Password</TextBlock>
+            <TextBox x:Name="passwordBox" FontSize="24"></TextBox>
+            <Button x:Name="startButton" 
                 HorizontalAlignment="Center" 
-                VerticalAlignment="Center" 
-                Width="300" 
-                Height="100" 
-                Grid.Column="1"
-                Grid.Row="2"
-                FontSize="24" Click="PressStartApplication">
-            PRESS START FOR WORK
-        </Button>
+                VerticalAlignment="Center"
+                Margin="20"
+                FontSize="24" Click="LoginInApplication">
+                LOGIN
+            </Button>
+        </StackPanel>
+
     </Grid>
 </Window>

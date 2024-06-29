@@ -1,6 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.Reflection.Emit;
-using WpfStudyApplication.Database.Enities;
 
 namespace WpfStudyApplication.Database.Enities
 {

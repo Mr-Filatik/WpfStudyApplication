@@ -1,9 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
-using System.Configuration;
-using System.Data;
 using System.IO;
 using System.Windows;
 using WpfStudyApplication.Database;
@@ -35,7 +32,7 @@ namespace WpfStudyApplication
             var serviceCollection = new ServiceCollection();
 
             serviceCollection.AddSingleton(new MyDbContext(optionsBuilder.Options));
-            serviceCollection.AddScoped<IUserRepository, UserRepository>();
+            serviceCollection.AddRepositories();
             serviceCollection.AddWindows();
 
             ServiceProvider = serviceCollection.BuildServiceProvider();
@@ -50,6 +47,13 @@ namespace WpfStudyApplication
         public static void AddWindows(this ServiceCollection serviceCollection)
         {
             serviceCollection.AddTransient(typeof(MainWindow));
+        }
+
+        public static void AddRepositories(this ServiceCollection serviceCollection)
+        {
+            serviceCollection.AddScoped<IUserRepository, UserRepository>();
+            serviceCollection.AddScoped<IAuthorRepository, AuthorRepository>();
+            serviceCollection.AddScoped<ILibrarianRepository, LibrarianRepository>();
         }
     }
 }

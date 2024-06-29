@@ -1,7 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace WpfStudyApplication.Database.Enities
+﻿namespace WpfStudyApplication.Database.Enities
 {
     public class User : PeopleInfo
     {
