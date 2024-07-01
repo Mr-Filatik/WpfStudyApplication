@@ -29,11 +29,11 @@ namespace WpfStudyApplication
 
             list.Add(1);
             MessageBox.Show($"Lenght: {list.Lenght}, Capacity: {list.Capacity}", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
-            Show(list);
+            //Show(list);
 
             list.AddRange(new int[] { 1, 2 });
             MessageBox.Show($"Lenght: {list.Lenght}, Capacity: {list.Capacity}", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
-            Show(list);
+            //Show(list);
 
             list.Insert(1, 22);
             MessageBox.Show($"Lenght: {list.Lenght}, Capacity: {list.Capacity}", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -43,19 +43,19 @@ namespace WpfStudyApplication
 
             list.AddRange(new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18 });
             MessageBox.Show($"Lenght: {list.Lenght}, Capacity: {list.Capacity}", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
-            Show(list);
+            //Show(list);
 
             list.Remove(22);
             MessageBox.Show($"Lenght: {list.Lenght}, Capacity: {list.Capacity}", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
-            Show(list);
+            //Show(list);
 
             list.RemoveAt(2);
             MessageBox.Show($"Lenght: {list.Lenght}, Capacity: {list.Capacity}", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
-            Show(list);
+            //Show(list);
 
             list.Add(19);
             MessageBox.Show($"Lenght: {list.Lenght}, Capacity: {list.Capacity}", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
-            Show(list);
+            //Show(list);
 
             //try
             //{
