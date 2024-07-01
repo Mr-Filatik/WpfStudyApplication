@@ -50,11 +50,11 @@ namespace WpfStudyApplication.Database.Repository
         {
             _context.Author.Add(author);
             _context.SaveChanges();
-            var newAuthor = _context.Users.FirstOrDefault(x => x.LastName == author.LastName && x.FirstName == author.FirstName && x.Patronymic == author.Patronymic);
-            if (newAuthor is null)
-            {
-                return false;
-            }
+            //var newAuthor = _context.Users.FirstOrDefault(x => x.LastName == author.LastName && x.FirstName == author.FirstName && x.Patronymic == author.Patronymic);
+            //if (newAuthor is null)
+            //{
+            //    return false;
+            //}
             return true;
         }
     }

@@ -5,6 +5,7 @@ using System.IO;
 using System.Windows;
 using WpfStudyApplication.Database;
 using WpfStudyApplication.Database.Abstract;
+using WpfStudyApplication.Database.Enities;
 using WpfStudyApplication.Database.Repository;
 
 namespace WpfStudyApplication
@@ -16,6 +17,7 @@ namespace WpfStudyApplication
     {
         public IConfiguration Configuration { get; set; }
         public IServiceProvider ServiceProvider { get; set; }
+        public Librarian Librarian { get; set; }
 
         protected override void OnStartup(StartupEventArgs e)
         {
@@ -47,6 +49,8 @@ namespace WpfStudyApplication
         public static void AddWindows(this ServiceCollection serviceCollection)
         {
             serviceCollection.AddTransient(typeof(MainWindow));
+            serviceCollection.AddTransient(typeof(TestWindow));
+            serviceCollection.AddTransient(typeof(WorkWindow));
         }
 
         public static void AddRepositories(this ServiceCollection serviceCollection)
@@ -54,6 +58,7 @@ namespace WpfStudyApplication
             serviceCollection.AddScoped<IUserRepository, UserRepository>();
             serviceCollection.AddScoped<IAuthorRepository, AuthorRepository>();
             serviceCollection.AddScoped<ILibrarianRepository, LibrarianRepository>();
+            serviceCollection.AddScoped<IBookRepository, BookRepository>();
         }
     }
 }

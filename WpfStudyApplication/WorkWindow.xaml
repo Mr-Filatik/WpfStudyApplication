@@ -1,0 +1,36 @@
+﻿<Window x:Class="WpfStudyApplication.WorkWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfStudyApplication"
+        mc:Ignorable="d"
+        Title="WorkWindow" Height="550" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="27"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Menu Height="25" VerticalAlignment="Top">
+            <MenuItem Header="App">
+                <MenuItem Header="Change Profile" ></MenuItem>
+                <MenuItem Header="Close App" ></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Search" >
+                <MenuItem Header="Search by Name" ></MenuItem>
+                <MenuItem Header="Search by Author" ></MenuItem>
+                <MenuItem Header="Search by User" ></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Page" >
+                <MenuItem Header="First" ></MenuItem>
+                <MenuItem Header="Previous" ></MenuItem>
+                <MenuItem Header="Next" ></MenuItem>
+                <MenuItem Header="Last" ></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Clear" ></MenuItem>
+        </Menu>
+    </Grid>
+</Window>
