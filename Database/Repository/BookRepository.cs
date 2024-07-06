@@ -1,4 +1,5 @@
-﻿using WpfStudyApplication.Database.Abstract;
+﻿using Microsoft.EntityFrameworkCore;
+using WpfStudyApplication.Database.Abstract;
 using WpfStudyApplication.Database.Enities;
 using WpfStudyApplication.Database.Exceptions;
 
@@ -49,6 +50,20 @@ namespace WpfStudyApplication.Database.Repository
             //{
             //    return false;
             //}
+            return true;
+        }
+
+        public bool EditBook(Book book)
+        {
+            _context.Books.Update(book);
+            _context.SaveChanges();
+            return true;
+        }
+
+        public bool DeleteBook(Book book)
+        {
+            _context.Books.Remove(book);
+            _context.SaveChanges();
             return true;
         }
     }

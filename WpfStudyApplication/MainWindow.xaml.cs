@@ -34,6 +34,7 @@ namespace WpfStudyApplication
                 //MessageBox.Show("OK", "Message", MessageBoxButton.OK, MessageBoxImage.Information);
                 var window = ((App)App.Current).ServiceProvider.GetService<WorkWindow>();
                 window.Show();
+                //window.Owner = this;
                 this.Close();
             }
             catch (EntityNotFoundException ex)

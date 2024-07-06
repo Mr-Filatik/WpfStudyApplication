@@ -4,12 +4,19 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfStudyApplication"
+        xmlns:converters="clr-namespace:WpfStudyApplication.Converters"
         mc:Ignorable="d"
-        Title="WorkWindow" Height="550" Width="800">
+        Title="WorkWindow" Height="550" Width="800" Name="NameOfWindow" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <converters:AuthorConverter x:Key="authorConverter"/>
+        <converters:UserConverter x:Key="userConverter"/>
+        <converters:ObjectToVisibilityConverter x:Key="objectToVisibilityConverter"/>
+    </Window.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="27"></RowDefinition>
-            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition Height="140"></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition Height="20"></RowDefinition>
         </Grid.RowDefinitions>
@@ -20,17 +27,123 @@
                 <MenuItem Header="Close App" ></MenuItem>
             </MenuItem>
             <MenuItem Header="Search" >
-                <MenuItem Header="Search by Name" ></MenuItem>
-                <MenuItem Header="Search by Author" ></MenuItem>
-                <MenuItem Header="Search by User" ></MenuItem>
+                <MenuItem Header="Search by Name" Click="SearchByBookName" ></MenuItem>
+                <MenuItem Header="Search by Author" Click="SearchByAuthor" ></MenuItem>
+                <MenuItem Header="Search by User" Click="SearchByUser" ></MenuItem>
             </MenuItem>
+            <MenuItem Header="Create Book" Click="CreateNewBook"></MenuItem>
             <MenuItem Header="Page" >
-                <MenuItem Header="First" ></MenuItem>
-                <MenuItem Header="Previous" ></MenuItem>
-                <MenuItem Header="Next" ></MenuItem>
-                <MenuItem Header="Last" ></MenuItem>
+                <MenuItem Header="First" Click="FirstPage" ></MenuItem>
+                <MenuItem Header="Previous" Click="PreviousPage" ></MenuItem>
+                <MenuItem Header="Next" Click="NextPage" ></MenuItem>
+                <MenuItem Header="Last" Click="LastPage" ></MenuItem>
             </MenuItem>
-            <MenuItem Header="Clear" ></MenuItem>
+            <MenuItem Header="Clear" Click="Clear" ></MenuItem>
         </Menu>
+
+        <Grid Grid.Row="1" Background="#FFF5FC9E">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0">
+                <StackPanel>
+                    <TextBlock>Books:</TextBlock>
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock>Search by Name:</TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox x:Name="bookName" Width="190"></TextBox>
+                        <Button Width="75" Click="SearchByBookName">Search</Button>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock>Search by Author:</TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock x:Name="bookAuthor" Width="190"></TextBlock>
+                        <Button Width="75" Click="SearchByAuthor">Search</Button>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock>Search by User:</TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock x:Name="bookUser" Width="190"></TextBlock>
+                        <Button Width="75" Click="SearchByUser">Search</Button>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+
+            <!--Visibility="{Binding ElementName=NameOfWindow, Path=SelectedBook, Converter={StaticResource objectToVisibilityConverter}}"-->
+            <StackPanel Grid.Column="1">
+                <StackPanel>
+                    <TextBlock>Autors:</TextBlock>
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock>Search by LastName:</TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox x:Name="authorLastName" Width="190"></TextBox>
+                        <Button Width="75" Click="SearchAuthorByLastName">Search</Button>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock>Search by FullName:</TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox x:Name="authorFullName" Width="190"></TextBox>
+                        <Button Width="75" Click="SearchAuthorByFullName">Search</Button>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Grid.Column="2">
+                <StackPanel>
+                    <TextBlock>Users:</TextBlock>
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock>Search by LastName:</TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox x:Name="userLastName" Width="190"></TextBox>
+                        <Button Width="75">Search</Button>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock>Search by FullName:</TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox x:Name="userFullName" Width="190"></TextBox>
+                        <Button Width="75">Search</Button>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock>Search by Email:</TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox x:Name="userEmail" Width="190"></TextBox>
+                        <Button Width="75">Search</Button>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+
+        <ListView Grid.Row="2" x:Name="bookList" SelectionChanged="BookSelected">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="40" DisplayMemberBinding="{Binding Path=Id}">Id</GridViewColumn>
+                    <GridViewColumn Width="200" DisplayMemberBinding="{Binding Path=Name}">Name</GridViewColumn>
+                    <GridViewColumn Width="200" DisplayMemberBinding="{Binding Path=Description}">Description</GridViewColumn>
+                    <GridViewColumn Width="200" DisplayMemberBinding="{Binding Path=Author, Converter={StaticResource authorConverter}}">Author</GridViewColumn>
+                    <!--<GridViewColumn Width="50">
+                        <GridViewColumn.Header>
+                            <TextBlock>Button</TextBlock>
+                        </GridViewColumn.Header>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Opacity="0">CLICK ME</Button>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>-->
+                    <GridViewColumn Width="100" DisplayMemberBinding="{Binding Path=User, Converter={StaticResource userConverter}}">Status</GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Window>

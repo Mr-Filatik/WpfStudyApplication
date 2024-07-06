@@ -49,7 +49,7 @@ namespace WpfStudyApplication
         public static void AddWindows(this ServiceCollection serviceCollection)
         {
             serviceCollection.AddTransient(typeof(MainWindow));
-            serviceCollection.AddTransient(typeof(TestWindow));
+            serviceCollection.AddTransient(typeof(BookWindow));
             serviceCollection.AddTransient(typeof(WorkWindow));
         }
 
